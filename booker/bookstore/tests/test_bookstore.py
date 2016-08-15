@@ -23,6 +23,7 @@ class BookStoreTest(StaticLiveServerTestCase):
 
         # I see a bold text welcoming me to the app
 
+
         # I am prompted to enter a search parameter
 
         # I enter the name of my book elasticsearch and hit on enter
