@@ -9,4 +9,10 @@ class InventoryModelTest(TestCase):
         books = Book()
         books.category = test_category
         books.save()
-        self.assertIn(books, test_category.books_set.all())
+        self.assertIn(books, test_category.books__set.all())
+
+    def test_string_representation_of_categories(self):
+        category = Category.objects.create(name="health", description="health category")
+        self.assertEqual(category.name, 'health')
+
+    
