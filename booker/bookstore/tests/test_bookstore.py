@@ -36,8 +36,6 @@ class BookStoreTest(StaticLiveServerTestCase):
 
         input_box.send_keys(Keys.RETURN)
 
-        body = self.browser.find_element_by_tag_name('body')
-        self.assertIn('elastic search', body.text)
 
 
 
