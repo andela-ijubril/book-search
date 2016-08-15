@@ -15,4 +15,3 @@ class InventoryModelTest(TestCase):
         category = Category.objects.create(name="health", description="health category")
         self.assertEqual(category.name, 'health')
 
-    
