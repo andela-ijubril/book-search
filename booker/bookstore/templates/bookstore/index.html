@@ -1,0 +1,35 @@
+{% load static %}
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Booker:: Book search made easy</title>
+    <link rel="stylesheet" href="{% static "css/bootstrap.min.cs" %}s">
+</head>
+<body>
+{% block content %}
+<div class="jumbotron">
+    <h1>Search books</h1>
+</div>
+
+
+<form class="form-horizontal" action="{% url 'result' %}" method="get">
+  <div class="form-group">
+
+    <div class="col-md-10">
+      <input type="text" class="form-control" name="name" placeholder="search books">
+
+        <div class="radio">
+            <label class="radio-inline"><input type="radio" name="bookerOptions" value="category" checked="checked" id="cat-id">Categories</label>
+            <label class="radio-inline"><input type="radio" name="bookerOptions" value="book" id="book-id">Books</label>
+        </div>
+        <button class="btn btn-default" type="submit">Button</button>
+    </div>
+
+  </div>
+</form>
+{% endblock content %}
+
+</body>
+</html>
