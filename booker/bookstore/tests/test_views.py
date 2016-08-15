@@ -6,6 +6,12 @@ from django.core.urlresolvers import reverse
 class BookStoreViewTestCase(TestCase):
     def setUp(self):
         self.client = Client()
+        self.category = Category.objects.create()
+        self.book = Book.objects.create()
+
+    def tearDown(self):
+        Category.objects.all().delete()
+        Book.objects.all().delete()
 
     def test_home_page_view(self):
         response = self.client.get('/')
