@@ -21,8 +21,29 @@ class BookStoreTest(StaticLiveServerTestCase):
         # As a user i go to the home page of my app
         self.browser.get('http:127.0.0.1:8000/')
 
+        self.assertIn('Booker:: Book search made easy', self.browser.title)
+        header_text = self.browser.find_element_by_tag_name('h1').text
+        self.assertIn('Booker:: Book search made easy', header_text)
+
         # I see a bold text welcoming me to the app
 
+        input_box = self.browser.find_element_by_name("name")
+        self.assertEqual('search books', input_box.get_attribute('placeholder'))
+
+        input_box.send_keys('elasticsearch')
+        input_box.send_keys(Keys.RETURN)
+
+        body = self.browser.find_element_by_tag_name('body')
+        self.assertIn('elasticsearch', body.text)
+
+        self.browser.get('http:127.0.0.1:8000')
+        input_box = self.browser.find_element_by_name("name")
+
+        input_box.send_keys('elasticsearch')
+        input_box.send_keys(Keys.RETURN)
+
+        body = self.browser.find_element_by_tag_name('body')
+        self.assertIn('No book matching the title', body.text)
 
         # I am prompted to enter a search parameter
 
