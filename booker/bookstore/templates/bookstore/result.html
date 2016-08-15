@@ -1,10 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends "bookstore/index.html" %}
+{% block content%}
 
-</body>
-</html>
+{% if books %}
+     <table class="table"> <caption>Books returned</caption>
+    <thead> <tr> <th>#</th> <th>Name</th> <th>category</th> <th>Author</th> </tr> </thead>
+    {% for book in books %}
+    <tbody> <tr> <th scope="row">{{ forloop.counter }}</th> <td>{{ book.name }}</td> <td>{{ book.category }}</td> <td>{{ book.author }}</td> </tr>
+    </tbody>
+</table>
+    {% endfor %}
+    {% else %}
+    <p>No book was found</p>
+{% endif %}
+{% endblock content %}
